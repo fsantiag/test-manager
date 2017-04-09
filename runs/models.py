@@ -23,13 +23,7 @@ class User(models.Model):
 
 
 class Status(models.Model):
-    DEFAULT_STATUSES = (
-            ('R', 'Running'),
-            ('W', 'Waiting'),
-            ('F', 'Failed'),
-            ('S', 'Success')
-        )
-    value = models.CharField(max_length=1, choices=DEFAULT_STATUSES)
+    value = models.CharField(max_length=1)
 
     class Meta:
         db_table = 'status'
@@ -40,8 +34,8 @@ class Run(models.Model):
     status = models.ForeignKey(Status)
     user = models.ForeignKey(User)
     test = models.ForeignKey(Test)
-    start = models.DateField(null=True)
-    end = models.DateField(null=True)
+    start = models.DateTimeField(null=True)
+    end = models.DateTimeField(null=True)
 
     class Meta:
         db_table = 'run'
