@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>
-                        Test Execution Manager <small>A general purpose tool to submit and manage tests</small>
+                        Test Execution Manager <small>A general purpose tool to submit and veiry tests runs</small>
                     </h1>
                 </div>
             </div>
@@ -36,22 +36,23 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
-                                <form role="form">
+                                <form action="{% url 'runs:index' %}" method="post">
+                                    {% csrf_token %}
                                     <div class="col-lg-4">
                                         <label>User Name</label>
-                                        <input class="form-control" />
+                                        <input class="form-control" name="user_name" />
                                         <p class="help-block">Example block-level help text here.</p>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label>Test Path</label>
-                                        <input class="form-control" />
+                                        <label>Test Name</label>
+                                        <input class="form-control" name="test_name"/>
                                         <p class="help-block">Example block-level help text here.</p>
                                     </div>
 
                                     <div class="col-lg-4">
                                         <label>Test Environment</label>
-                                        <select class="form-control">
-                                            <option>1</option>
+                                        <select class="form-control" name="test_env">
+                                            <option selected="selected">1</option>
                                             <option>2</option>
                                             <option>3</option>
                                             <option>4</option>
@@ -61,7 +62,6 @@
                                     </div>
                                     <div class="panel-footer col-lg-12 text-center">
                                         <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
                                     </div>
                                 </form>
                             </div>
@@ -69,6 +69,26 @@
                     </div>
                 </div>
             </div>
+            {% if errors %}
+            <div class="row">
+                <div class="col-lg-12">
+                    {% for error in errors %}
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong> {{ error}}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% if success %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-success">
+                        Success: Test execution submitted.
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             <ol class="breadcrumb">
                 <li class="active">
                     <i class="fa fa-dashboard"></i> Tests Execution Status
@@ -93,10 +113,10 @@
                                     {% for run in runs_list %}
                                     <tr class="{% if run.status.id == 1 %}active{% elif run.status.id == 2 %}danger{% elif run.status.id == 3 %}success{% else %}warning{% endif %}">
                                         <td>{{ run.id }}</td>
-                                        <td>{{ run.test.description }}</td>
+                                        <td>{{ run.test.name }}</td>
                                         <td>{{ run.user.name }}</td>
-                                        <td>{{ run.start }}</td>
-                                        <td>{{ run.end }}</td>
+                                        <td>{% if run.start %}{{ run.start }}{% else %}{% endif %}</td>
+                                        <td>{% if run.end %}{{ run.end }}{% else %}{% endif %}</td>
                                         <td>{{ run.environment.description }}</td>
                                         <td>{{ run.status.value|upper }}</td>
                                     </tr>

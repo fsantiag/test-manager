@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Test(models.Model):
-    description = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
 
     class Meta:
         db_table = 'test'
@@ -23,7 +23,7 @@ class User(models.Model):
 
 
 class Status(models.Model):
-    value = models.CharField(max_length=1)
+    value = models.CharField(max_length=20)
 
     class Meta:
         db_table = 'status'
