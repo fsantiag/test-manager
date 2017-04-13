@@ -57,7 +57,7 @@ def updated_runs(request):
     runs_list = Run.objects.all()
     context = {}
     context['runs_list'] = runs_list
-    return render(request, 'runs/runs_table.html', context)
+    return render(request, 'runs_table.html', context)
 
 
 def render_template(request, errors=[], success=None):
@@ -71,7 +71,7 @@ def render_template(request, errors=[], success=None):
     if success:
         context['success'] = success
 
-    return render(request, 'runs/index.html', context)
+    return render(request, 'index.html', context)
 
 
 def validate_post(request):

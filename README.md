@@ -32,7 +32,7 @@ apt-get install sqlite
 
 In the root folder, populate the database:
 ```
-echo ".read db.sql" | ./manage.py dbshell
+echo ".read migrations.sql" | ./manage.py dbshell
 ```
 
 Running
@@ -49,7 +49,7 @@ Running
 ```
 
 
-The app will be running at localhost:8000/runs/
+The app will be running at localhost:8000/app/
 
 The database used is SQLite, therefore this project is not suitable for production environments.
 

@@ -6,7 +6,7 @@ django.setup()
 
 import queue
 import time
-from runs.models import Run, Status
+from app.models import Run, Status
 from executor import TestExecutor
 from django.utils import timezone
 

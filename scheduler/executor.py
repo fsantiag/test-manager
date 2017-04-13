@@ -21,7 +21,7 @@ class TestExecutor(threading.Thread):
         code is enqueued so the scheduler can determine if the run has
         completed
         """
-        filename = "runs/static/runs/logs/{}.txt".format(self.run_id)
+        filename = "app/static/logs/{}.txt".format(self.run_id)
         os.makedirs(os.path.dirname(filename), exist_ok=True)
         with open(filename, "w") as f:
             CMD = "python3 -m unittest -v autotests/tests/{}.py 2>&1".format(

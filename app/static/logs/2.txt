@@ -1,0 +1,8 @@
+test_sameple_with_big_timeout (autotests.tests.sample_timer.Sample) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 60.046s
+
+OK
+Starting to sleep for 60 seconds now!
+Sleep completed! Exiting...
