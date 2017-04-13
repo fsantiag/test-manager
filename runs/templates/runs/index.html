@@ -107,6 +107,7 @@
                                         <th>End</th>
                                         <th>Environment</th>
                                         <th>Status</th>
+                                        <th>Output</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -119,6 +120,7 @@
                                         <td>{% if run.end %}{{ run.end }}{% else %}{% endif %}</td>
                                         <td>{{ run.environment.description }}</td>
                                         <td>{{ run.status.value|upper }}</td>
+                                        <td><a target="_blank" href="{% static 'runs/autotests/runs/' %}{{ run.id }}.txt">View</a></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

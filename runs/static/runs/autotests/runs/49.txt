@@ -1,0 +1,16 @@
+autotests/tests/sample_false_assert (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: autotests/tests/sample_false_assert (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: autotests/tests/sample_false_assert
+Traceback (most recent call last):
+  File "/usr/lib64/python3.5/unittest/loader.py", line 153, in loadTestsFromName
+    module = __import__(module_name)
+ImportError: No module named 'autotests/tests/sample_false_assert'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
