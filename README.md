@@ -25,6 +25,11 @@ Install Django:
 pip install django==1.11
 ```
 
+Install SQLite
+```
+apt-get install sqlite
+```
+
 In the root folder, populate the database:
 ```
 echo ".read db.sql" | ./manage.py dbshell
