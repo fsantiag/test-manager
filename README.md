@@ -46,6 +46,8 @@ Running
 
 The app will be running at localhost:8000/runs/
 
+The database used is SQLite, therefore this project is not suitable for production environments.
+
 License
 -------
 
