@@ -5,6 +5,7 @@ django.setup()
 
 
 import queue
+import time
 from runs.models import Run, Status
 from executor import TestExecutor
 from django.utils import timezone
@@ -50,6 +51,7 @@ class Scheduler(object):
                     run.status = Status.objects.get(id=STATUS["running"])
                     run.start = timezone.now()
                     run.save()
+                time.sleep(1)
 
             self._verify_test_states()
     # start()

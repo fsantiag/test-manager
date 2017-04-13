@@ -1,11 +1,11 @@
-Test Executiopn Manager
+Test Execution Manager
 =======================
 
-The Test Execution Manager is a general purpose tool build using Python3 to submit and check tests executions.
+The Test Execution Manager is a general purpose tool built using Python3 to submit and check tests executions.
 
 ![Test Execution Manager](docs/images/tem.png)
 
-The project has two main componentes:
+The project has two main components:
 * Scheduler
 * Django App
 
