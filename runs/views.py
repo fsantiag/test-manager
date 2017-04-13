@@ -49,6 +49,17 @@ def index(request):
         return HttpResponseBadRequest()
 
 
+def updated_runs(request):
+    """
+    Returns the table with the current runs updated. This is required for the
+    automatic update on the browser.
+    """
+    runs_list = Run.objects.all()
+    context = {}
+    context['runs_list'] = runs_list
+    return render(request, 'runs/runs_table.html', context)
+
+
 def render_template(request, errors=[], success=None):
     runs_list = Run.objects.all()
     envs_list = Environment.objects.all()

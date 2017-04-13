@@ -94,36 +94,8 @@
             </ol>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Test Name</th>
-                                        <th>User</th>
-                                        <th>Start</th>
-                                        <th>End</th>
-                                        <th>Environment</th>
-                                        <th>Status</th>
-                                        <th>Output</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for run in runs_list %}
-                                    <tr class="{% if run.status.id == 1 %}active{% elif run.status.id == 2 %}danger{% elif run.status.id == 3 %}success{% else %}warning{% endif %}">
-                                        <td>{{ run.id }}</td>
-                                        <td>{{ run.test.name }}</td>
-                                        <td>{{ run.user.name }}</td>
-                                        <td>{% if run.start %}{{ run.start }}{% else %}{% endif %}</td>
-                                        <td>{% if run.end %}{{ run.end }}{% else %}{% endif %}</td>
-                                        <td>{{ run.environment.description }}</td>
-                                        <td>{{ run.status.value|upper }}</td>
-                                        <td><a target="_blank" href="{% static 'runs/autotests/runs/' %}{{ run.id }}.txt">View</a></td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="table-responsive" id="runs_table">
+                        {% include "runs/runs_table.html" %}
                     </div>
                 </div>
             </div>
@@ -135,5 +107,15 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static 'runs/js/bootstrap.min.js' %}"></script>
+
+    <!-- Update the runs table every 5 seconds -->
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({ cache: false });
+            var my_refresh = setInterval(function() {
+                $('#runs_table').load('updated_runs/');
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
