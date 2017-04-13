@@ -64,6 +64,8 @@ class Scheduler(object):
             else:
                 run.status = Status.objects.get(id=STATUS["success"])
                 run.save()
+
+            # delete key since test is not executing anymore
             del self.environments[run.environment.id]
 
 
