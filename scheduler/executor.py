@@ -1,5 +1,6 @@
 import threading
 import subprocess
+import os
 
 
 class TestExecutor(threading.Thread):
@@ -20,10 +21,9 @@ class TestExecutor(threading.Thread):
         code is enqueued so the scheduler can determine if the run has
         completed
         """
-        with open(
-                "runs/static/runs/autotests/runs/{}.txt".format(
-                    self.run_id), "w") as f:
-
+        filename = "runs/static/runs/logs/{}.txt".format(self.run_id)
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        with open(filename, "w") as f:
             CMD = "python3 -m unittest -v autotests/tests/{}.py 2>&1".format(
                     self.test_name)
 
