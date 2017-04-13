@@ -22,7 +22,7 @@ Intallation and Configuration
 Install Django:
 
 ```
-pip install django==1.11
+pip3 install django==1.11
 ```
 
 Install SQLite
@@ -56,4 +56,4 @@ The database used is SQLite, therefore this project is not suitable for producti
 License
 -------
 
-MIT is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Test Execution Manager is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
