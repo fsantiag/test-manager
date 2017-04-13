@@ -52,11 +52,9 @@
                                     <div class="col-lg-4">
                                         <label>Test Environment</label>
                                         <select class="form-control" name="test_env">
-                                            <option selected="selected">1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                            {% for env in envs_list %} 
+                                            <option>{{ env.description}}</option>
+                                            {% endfor %}
                                         </select>
                                         <p class="help-block">Example block-level help text here.</p>
                                     </div>

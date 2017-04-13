@@ -33,10 +33,10 @@ def index(request):
 
             try:
                 environment = Environment.objects.get(
-                        id=request.POST.get('test_env'))
+                        description=request.POST.get('test_env'))
             except Environment.DoesNotExist:
                 environment = Environment()
-                environment.name = request.POST.get('test_env').lower()
+                environment.description = request.POST.get('test_env').lower()
                 environment.save()
 
             run.user = user
@@ -54,8 +54,10 @@ def index(request):
 
 def render_template(request, errors=[], success=None):
     runs_list = Run.objects.all()
+    envs_list = Environment.objects.all()
     context = {}
     context['runs_list'] = runs_list
+    context['envs_list'] = envs_list
     if errors:
         context['errors'] = errors
     if success:
