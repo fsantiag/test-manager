@@ -25,7 +25,7 @@ Install Django:
 pip3 install django==1.11
 ```
 
-Install SQLite
+Install SQLite:
 ```
 apt-get install sqlite
 ```
