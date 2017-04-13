@@ -1,10 +1,7 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from django.http import HttpResponseBadRequest
 from .models import User, Run, Test, Environment, Status
 
-
-# THINGS TO FIX
-# prevent form resubmission on refresh(?)
 
 def index(request):
     if request.method == 'GET':
@@ -42,7 +39,7 @@ def index(request):
             run.user = user
             run.test = test
             run.environment = environment
-            run.status = Status.objects.get(id=1)
+            run.status = Status.objects.get(value="waiting")
             run.save()
 
             return render_template(request, success=True)

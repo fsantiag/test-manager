@@ -19,22 +19,22 @@ STATUS = {
 
 
 class Scheduler(object):
+    """
+    A general purpose scheduler to determine when a test can execute according
+    to the environment. It is also responsible for checking the tests states.
+    """
 
     def __init__(self):
-        '''
-        Initialize the scheduler
-        '''
-
         # initialize variables
         self.running = False
         self.message_queue = queue.Queue()
         self.environments = {}
+    # __init__()
 
     def start(self):
-        '''
+        """
         Scheduler main loop.
-        '''
-
+        """
         self.running = True
 
         while self.running:
@@ -52,8 +52,12 @@ class Scheduler(object):
                     run.save()
 
             self._verify_test_states()
+    # start()
 
     def _verify_test_states(self):
+        """
+        Verify the test states and update accordingly
+        """
         while not self.message_queue.empty():
             run_id, return_code = self.message_queue.get_nowait()
             run = Run.objects.get(id=run_id)
@@ -67,6 +71,7 @@ class Scheduler(object):
 
             # delete key since test is not executing anymore
             del self.environments[run.environment.id]
+    # _verify_test_states()
 
 
 if __name__ == '__main__':
