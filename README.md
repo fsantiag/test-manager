@@ -12,7 +12,7 @@ The project has two main components:
 The scheduler is the component responsible for starting the execution of the tests according to the environment selected as well as checking if the tests have already finished so its status can be properly updated.
 The Django App is a regular RESTful API to serve html to clients.
 
-New tests can be inserted by placing the respective testes under /autotests/tests.
+New tests can be inserted by placing the respective tests under /autotests/tests.
 
 This project is based in a free bootstrap template [SB Admin](https://startbootstrap.com/template-overviews/sb-admin/).
 
